@@ -4,18 +4,20 @@ public class Main {
 
         Calculator calc = Calculator.instance.get();
 
-        int a = calc.plus.apply(1, 2);
-        int b = calc.minus.apply(1, 1);
-        int c = calc.devide.apply(a, b);
-
+        try {
+            int a = calc.plus.apply(1, 2);
+            int b = calc.minus.apply(1, 1);
+            int c = calc.devide.apply(a, b);
+            calc.println.accept(c);
+        } catch (ArithmeticException e) {
+            System.out.println("Деление на ноль невозможно!");
+        }
 
         /**
          * Ошибка при выполнении calc.devide.apply(a, b) возникает в результате деления на ноль.
-         * Способы решения разные, можно в такой ситуации возвращать "0", либо сделать обработку исключения с описание ошибки.
+         * Необходимо сделать обработку исключения, я выполнил это через try/catch.
          */
 
-        System.out.println();
-        calc.println.accept(c);
 
     }
 }
